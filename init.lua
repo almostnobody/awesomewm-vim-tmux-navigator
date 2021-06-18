@@ -77,14 +77,14 @@ local function new(args)
         local c = client.focus
         local client_name = c and c.name or ""
         print(client_name)
-        if string.find(client_name, "- N?VIM$") then
+        if string.find(client_name, "- N?VIM$") or string.find(client_name, "vim$") or client_name == "vim" then
             print("VIM")
             return vim_navigate(dir)
         elseif string.find(client_name, "- TMUX$") then
             print("TMUX")
             return tmux_navigate(dir)
         else
-            print("NOTHING")
+            print("NOTHING new")
             focus(dir)
         end
     end
