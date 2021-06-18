@@ -76,6 +76,7 @@ local function new(args)
     local navigate = function(dir)
         local c = client.focus
         local client_name = c and c.name or ""
+        print(client_name)
         if string.find(client_name, "- N?VIM$") then
             return vim_navigate(dir)
         elseif string.find(client_name, "- TMUX$") then
