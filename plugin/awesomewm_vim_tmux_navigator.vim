@@ -143,16 +143,16 @@ command! TmuxNavigateRight call <SID>TmuxWinCmd('l')
 command! TmuxNavigatePrevious call <SID>TmuxWinCmd('p')
 
 if s:UseTmuxNavigatorMappings()
-  nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-  nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+  nnoremap <silent> <c-s-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <c-s-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <c-s-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <c-s-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <c-s-\> :TmuxNavigatePrevious<cr>
   if s:UseTmuxNavigatorMappingsInInsertMode()
-    inoremap <silent> <c-h> <Esc>:TmuxNavigateLeft<cr>
-    inoremap <silent> <c-j> <Esc>:TmuxNavigateDown<cr>
-    inoremap <silent> <c-k> <Esc>:TmuxNavigateUp<cr>
-    inoremap <silent> <c-l> <Esc>:TmuxNavigateRight<cr>
-    inoremap <silent> <c-\> <Esc>:TmuxNavigatePrevious<cr>
+    inoremap <silent> <c-s-h> <Esc>:TmuxNavigateLeft<cr>
+    inoremap <silent> <c-s-j> <Esc>:TmuxNavigateDown<cr>
+    inoremap <silent> <c-s-k> <Esc>:TmuxNavigateUp<cr>
+    inoremap <silent> <c-s-l> <Esc>:TmuxNavigateRight<cr>
+    inoremap <silent> <c-s-\> <Esc>:TmuxNavigatePrevious<cr>
   endif
 endif

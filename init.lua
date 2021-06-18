@@ -13,6 +13,7 @@ local function new(args)
 
     local tmux = {}
     tmux.left = function()
+        --os.execute("xdotool key --clearmodifiers --window "..c.window.." Escape")
         root.fake_input("key_release", "Left")
         root.fake_input("key_press", "Left")
         root.fake_input("key_release", "Left")
@@ -66,9 +67,12 @@ local function new(args)
         keygrabber.stop()
         root.fake_input("key_release", mod_keysym)
         root.fake_input("key_release", "Control_L")
+        root.fake_input("key_release", "Shift")
         root.fake_input("key_press", "Control_L")
+        root.fake_input("key_press", "Shift")
         vim[dir]()
         root.fake_input("key_release", "Control_L")
+        root.fake_input("key_release", "Shift")
         root.fake_input("key_press", mod_keysym)
     end
 
