@@ -25,6 +25,9 @@ function! s:UseTmuxNavigatorMappingsInInsertMode()
   return exists("g:tmux_navigator_insert_mode")
 endfunction
 
+let g:tmux_navigator_tmuxfocus = get(g:, 'tmux_navigator_tmuxfocus', "sh ~/.config/awesome/awesomewm-vim-tmux-navigator/tmux_focus.sh")
+let g:tmux_navigator_awesomeclient = get(g:, 'tmux_navigator_awesomeclient', "awesome-client")
+
 function! s:InTmuxSession()
   return $TMUX != ''
 endfunction
@@ -89,7 +92,7 @@ function! s:TmuxAwareNavigate(direction)
 
 	let dir = s:CmdToDir(a:direction)
 
-    let cmd = 'sh ~/.config/awesome/awesomewm-vim-tmux-navigator/tmux_focus.sh '. dir
+    let cmd = g:tmux_navigator_tmuxfocus. ' '. dir
     silent call system(cmd)
 
     if s:NeedsVitalityRedraw()
@@ -114,7 +117,7 @@ func! s:SystemWindowNavigate(cmd)
         finish
     endif
 	let dir = s:CmdToDir(a:cmd)
-    call system('awesome-client ''awesome.emit_signal("navigator::focus","' . dir . '")''')
+    call system(g:tmux_navigator_systemfocus . ' ''awesome.emit_signal("navigator::focus","' . dir . '")''')
 
     if !has("gui_running")
         redraw!
