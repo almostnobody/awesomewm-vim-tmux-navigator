@@ -13,7 +13,6 @@ local function new(args)
 
     local tmux = {}
     tmux.left = function()
-        --os.execute("xdotool key --clearmodifiers --window "..c.window.." Escape")
         root.fake_input("key_release", "Left")
         root.fake_input("key_press", "Left")
         root.fake_input("key_release", "Left")
@@ -33,12 +32,14 @@ local function new(args)
         root.fake_input("key_press", "Down")
         root.fake_input("key_release", "Down")
     end
-    local tmux_navigate = function(dir)
+    local tmux_navigate = function(dir, cid)
         keygrabber.stop()
         root.fake_input("key_release", mod_keysym)
-        root.fake_input("key_press", "Control_L")
-        tmux[dir]()
-        root.fake_input("key_release", "Control_L")
+        --root.fake_input("key_press", "Control_L")
+        --tmux[dir]()
+        dir = str:gsub("^%l", string.upper)
+        os.execute("xdotool key --clearmodifiers --window "..cid.." Ctrl+"..dir)
+        --root.fake_input("key_release", "Control_L")
         root.fake_input("key_press", mod_keysym)
     end
 
